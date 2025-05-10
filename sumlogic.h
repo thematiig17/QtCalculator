@@ -6,19 +6,26 @@
 class SumLogic : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(int result READ result NOTIFY resultChanged)
+    Q_PROPERTY(double result READ result NOTIFY resultChanged);
 
 public:
     SumLogic();
+    Q_INVOKABLE void add(double a, double b);
+    Q_INVOKABLE void subtract(double a, double b);
+    Q_INVOKABLE void multiply(double a, double b);
+    Q_INVOKABLE void divide(double a, double b);
 
-    Q_INVOKABLE void add(int a, int b);
-    int result() const;
+    double result();
 
 signals:
     void resultChanged();
 
 private:
-    int m_result;
+    double m_result;
 };
+
+
+
+
 
 #endif // SUMLOGIC_H

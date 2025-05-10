@@ -2,13 +2,29 @@
 
 SumLogic::SumLogic() : m_result(0) {}
 
-void SumLogic::add(int a, int b)
+double SumLogic::result()
 {
-    m_result = a + b;
+    return round(m_result * 10000) / 10000;
+}
+void SumLogic::add(double a, double b)
+{
+    m_result = round((a + b) * 10000) / 10000;
+    emit resultChanged();
+}
+void SumLogic::subtract(double a, double b)
+{
+    m_result = round((a - b) * 10000) / 10000;
     emit resultChanged();
 }
 
-int SumLogic::result() const
+void SumLogic::multiply(double a, double b)
 {
-    return m_result;
+    m_result = round((a * b) * 10000) / 10000;
+    emit resultChanged();
+}
+
+void SumLogic::divide(double a, double b)
+{
+    m_result = round((a / b) * 10000) / 10000;
+    emit resultChanged();
 }
